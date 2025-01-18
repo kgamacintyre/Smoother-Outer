@@ -1,0 +1,73 @@
+html{
+    background-color: lightgray;
+}
+body {
+    font-family: Tahoma, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+.pg-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    height: 10vh;
+    border:4px solid blue;
+}
+.pg-banner input {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+.pg-footer {
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    width: 80vw;
+    text-align: center;
+    padding: 1.5em 0;
+}
+.navigateToTeam {
+    background-color: #003366;
+}
+.navigateToTeam ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+}
+.navigateToTeam a:link,
+.navigateToTeam a:visited,
+.navigateToHome a:link,
+.navigateToHome a:visited {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.navigateToTeam a:hover,
+.navigateToTeam a:active,
+.navigateToHome a:hover, 
+.navigateToHome a:active {
+    color: yellow;
+}
+.pg-main-content {
+    padding: 2em;
+}
+.content-section {
+    border: 4px dashed steelblue;
+    border-radius: 10px;
+    padding: 1.5em;
+}
+.navigateToHome {
+    background-color: #003366;
+}
+.navigateToHome ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+}
