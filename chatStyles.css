@@ -1,3 +1,62 @@
 html{
-    background-color: lightblue;
+    background-color: white;
 }
+body {
+    align-items: center;
+    text-align: center;
+    font-family: Tahoma, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2;
+}
+footer {
+    font-family: Tahoma, sans-serif;
+    position: fixed;
+    bottom: 0;
+    background-color: skyblue;
+    color: white;
+    width: 100vw;
+    text-align: center;
+    font-size: large;
+    padding: 1.5em 0;
+}
+
+ul {
+    font-family: Tahoma, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  li, a {
+
+    padding: 8px;
+    font-family: Tahoma, sans-serif;
+    font-size: 20px;
+    float: left;
+    text-decoration: none;
+    margin-right: 10px; 
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: skyblue;
+}
+a:link, a:visited {
+    background-color: darkcyan;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: darkblue;
+  }
+
+  p {
+    text-align: center;
+    width: 800px;
+    margin: 0 auto;
+  }
+  
