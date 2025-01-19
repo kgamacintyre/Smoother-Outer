@@ -59,4 +59,44 @@ a:link, a:visited {
     width: 800px;
     margin: 0 auto;
   }
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
   
+
+  .left {
+    left: 0;
+  }
+  
+
+  .right {
+    right: 0;
+    
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+button {
+     margin-top: 20px;
+    text-align: center;
+    border: none;
+    background-color: darkcyan;
+    color: white;
+    padding: 15px 32px; 
+}
+.button:hover {
+    background-color: skyblue; 
+    color: black;
+  }
