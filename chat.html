@@ -7,17 +7,17 @@
   <link rel="stylesheet" href="css/chatStyles.css">
 </head>
 <body>
-  <header>  
+  <header>
     <navbar>
       <ul>
         <div id="navigate">
-            <li><a style="font-size:35px">SocioFlo</a></li>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="ourTeam.html">Our Team</a></li>
-            <li><a href="chat.html">Chat Now...</a></li>
-          </div>
-        </ul>
-    </navbar>   
+          <li><a style="font-size:35px">SocioFlo</a></li>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="ourTeam.html">Our Team</a></li>
+          <li><a href="chat.html">Chat Now...</a></li>
+        </div>
+      </ul>
+    </navbar>
   </header>
   <main>
 
@@ -28,14 +28,14 @@
           <img src="Images/SocioFlo-Robo-Logo.jpg" alt="RoboLogo" width="150" height="150" style="position: absolute; left: 300px; top: 265px;">
           <div class="centered">
             <h1>Bot Suggestion: </h1>
-              <p id="botSuggestion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum arcu, auctor et tincidunt nec, ullamcorper eget dui.</p>
+              <p id="botSuggestion">---</p>
           </div>
         </div>
-        
+
         <div class="split right">
           <div class="centered">
             <h2>Conversation: </h2>
-            <p id="conversationText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ipsum arcu, auctor et tincidunt nec, ullamcorper eget dui.</p>
+            <p id="conversationText">---</p>
           </div>
         </div>
     </main>
@@ -43,64 +43,48 @@
     <p>Created by Natural Intelligence</p>
   </footer>
 
-
   <script>
     const botSuggestion = document.getElementById('botSuggestion');
     const conversationText = document.getElementById('conversationText');
     const startButton = document.getElementById('startButton');
     const stopButton = document.getElementById('stopButton');
 
-    const suggestions = [
-      'How can I help you today?',
-      'Tell me more about your day.',
-      'What would you like to talk about?',
-      'Let me know how I can assist you.',
-      'What interesting topic do you have in mind?'
-    ];
+    // START RECORDING
+    startButton.addEventListener('click', () => {
+      fetch('http://127.0.0.1:5000/start_recording', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => console.error(err));
+    });
 
-    const conversations = [
-      'The weather is lovely today!',
-      'Did you watch the latest movie?',
-      'Lets discuss recent tech trends.',
-      'I heard about the latest advancements in AI.',
-      'Whats your favorite book or genre?'
-    ];
-    
+    // STOP RECORDING
+    stopButton.addEventListener('click', () => {
+      fetch('http://127.0.0.1:5000/stop_recording', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => console.error(err));
+    });
 
-    let conversationHistory = [];
-
-    function startListening() {
-      const maxHistoryLength = 50; 
-
-      const interval = setInterval(() => {
-        const suggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
-        const conversation = conversations[Math.floor(Math.random() * conversations.length)];
-        
-        conversationHistory.push(conversation);
-        
-        
-        if (conversationHistory.length > maxHistoryLength) {
-          conversationHistory.shift(); 
-        }
-
-        botSuggestion.textContent = suggestion;
-        conversationText.innerHTML = conversationHistory.join('<br>'); 
-
-        
-        conversationText.scrollTop = conversationText.scrollHeight;
-
-      }, 1000); // 1 second interval
-
-      stopButton.addEventListener('click', () => clearInterval(interval));
+    // PERIODICALLY FETCH TRANSCRIPTION & GPT DATA
+    function fetchData() {
+      fetch('http://127.0.0.1:5000/get_data')
+        .then(response => response.json())
+        .then(data => {
+          // data.conversation => entire conversation
+          // data.botSuggestion => latest GPT suggestion
+          conversationText.textContent = data.conversation || '';
+          botSuggestion.textContent = data.botSuggestion || '';
+        })
+        .catch(err => console.error(err));
     }
 
-    function stopListening() {
-      botSuggestion.textContent = 'Listening stopped.';
-      conversationText.textContent = 'Conversation has ended.';
-    }
-
-    startButton.addEventListener('click', startListening);
-    stopButton.addEventListener('click', stopListening);
+    // Poll every 2 seconds
+    setInterval(fetchData, 2000);
   </script>
+
 </body>
 </html>
