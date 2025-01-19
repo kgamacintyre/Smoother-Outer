@@ -1,4 +1,4 @@
-html{
+html {
     background-color: white;
 }
 body {
@@ -26,9 +26,8 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-  li, a {
-
+}
+li, a {
     padding: 8px;
     font-family: Tahoma, sans-serif;
     font-size: 20px;
@@ -48,17 +47,16 @@ a:link, a:visited {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-  }
-  
-  a:hover, a:active {
+}
+a:hover, a:active {
     background-color: darkblue;
-  }
+}
 
-  p {
+p {
     text-align: center;
     width: 800px;
     margin: 0 auto;
-  }
+}
 
 .split {
     height: 100%;
@@ -68,35 +66,40 @@ a:link, a:visited {
     top: 0;
     overflow-x: hidden;
     padding-top: 20px;
-  }
-  
-
-  .left {
+}
+.left {
     left: 0;
-  }
-  
-
-  .right {
+}
+.right {
     right: 0;
-    
-  }
-  
-  .centered {
+}
+.centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
 button {
-     margin-top: 20px;
+    margin: 20px auto;
+    display: inline-block;
     text-align: center;
     border: none;
     background-color: darkcyan;
     color: white;
     padding: 15px 32px; 
+    cursor: pointer; 
+    position: relative;
+    z-index: 10; 
+    font-size: 16px;
 }
-.button:hover {
+button:hover {
     background-color: skyblue; 
     color: black;
+}
+#conversationText {
+    max-height: 400px; /* Limit the height to prevent overflow */
+    overflow-y: auto;  /* Enable vertical scrolling if needed */
+    white-space: pre-line; /* Preserve line breaks properly */
+    word-wrap: break-word; /* Ensure content doesn't break outside boundary */
   }
